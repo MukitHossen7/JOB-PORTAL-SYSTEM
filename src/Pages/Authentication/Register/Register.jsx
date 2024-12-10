@@ -1,7 +1,11 @@
 import Lottie from "lottie-react";
 import animationRegister from "../../../assets/Lottie/register.json";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import toast from "react-hot-toast";
 const Register = () => {
+  const { createUsers } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -14,6 +18,15 @@ const Register = () => {
     const email = data.email;
     const password = data.password;
     console.log(name, photo, email, password);
+    createUsers(email, password)
+      .then((result) => {
+        toast.success("Registration successfully");
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error("Error creating user: ", error);
+        toast.error("Already use this email address");
+      });
   };
   return (
     <div>
