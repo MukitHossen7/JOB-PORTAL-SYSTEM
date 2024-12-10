@@ -89,6 +89,7 @@ const Register = () => {
                     },
                   })}
                   placeholder="email"
+                  type="email"
                   className="input input-bordered"
                 />
                 {errors.email && (
@@ -117,6 +118,7 @@ const Register = () => {
                         "Password must contain at least one uppercase letter, one lowercase letter",
                     },
                   })}
+                  type="password"
                   placeholder="password"
                   className="input input-bordered"
                 />
