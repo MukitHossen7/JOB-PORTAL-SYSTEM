@@ -1,6 +1,17 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { signOut } from "firebase/auth";
+import auth from "../../Firebase/firebase.init";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+  const handleLogOut = () => {
+    signOut(auth).then(() => {
+      toast.success("Successfully logged out");
+    });
+  };
   return (
     <div className="pt-8">
       <div className="navbar bg-base-100">
@@ -39,13 +50,21 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-3">
-          <Link to="/login">
-            <button className="btn btn-primary">Login</button>
-          </Link>
-          <Link to="/register">
-            {" "}
-            <button className="btn btn-primary">Register</button>
-          </Link>
+          {user?.email ? (
+            <button onClick={handleLogOut} className="btn btn-primary">
+              LogOut
+            </button>
+          ) : (
+            <div>
+              <Link to="/login">
+                <button className="btn btn-primary">Login</button>
+              </Link>
+              <Link to="/register">
+                {" "}
+                <button className="btn btn-primary">Register</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

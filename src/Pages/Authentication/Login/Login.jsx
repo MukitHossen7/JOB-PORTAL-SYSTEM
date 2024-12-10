@@ -1,7 +1,13 @@
 import Lottie from "lottie-react";
 import loginAnimation from "../../../assets/Lottie/login.json";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -12,7 +18,16 @@ const Login = () => {
     console.log(data);
     const email = data.email;
     const password = data.password;
-    console.log(email, password);
+    signInUser(email, password)
+      .then((result) => {
+        toast.success("Login successful");
+        console.log(result);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Invalid credentials email/password");
+      });
   };
   return (
     <div>
