@@ -30,8 +30,8 @@ const Login = () => {
       });
   };
   return (
-    <div>
-      <div className="hero  min-h-screen">
+    <div className="">
+      <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse gap-10 lg:gap-14">
           <div className="text-center lg:text-left w-full lg:w-1/2">
             <Lottie animationData={loginAnimation}></Lottie>

@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { signOut } from "firebase/auth";
 import auth from "../../Firebase/firebase.init";
 import toast from "react-hot-toast";
-
+import navIcon from "../../assets/icon/icons8-job-application-48.png";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -40,7 +40,15 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
             </ul>
           </div>
-          <Link to="/" className="text-xl font-semibold">
+          <Link
+            to="/"
+            className="text-xl font-semibold bg-gradient-to-r from-indigo-400 via-indigo-500 to-indigo-600 text-transparent bg-clip-text flex "
+          >
+            <img
+              src={navIcon}
+              alt="Job Portal Logo"
+              className="h-8 w-8 ml-2 rounded-md"
+            />
             JOB_PORTAL
           </Link>
         </div>
