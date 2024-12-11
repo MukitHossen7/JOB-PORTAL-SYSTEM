@@ -4,16 +4,21 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
 const Login = () => {
-  const { signInUser, signInGoogle } = useContext(AuthContext);
+  const { signInUser, signInGoogle, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
 
     formState: { errors },
   } = useForm();
+  if (user) {
+    // const redirect = location.state || "/";
+    return <Navigate to={location.state || "/"}></Navigate>;
+  }
   const handleLogin = (data) => {
     console.log(data);
     const email = data.email;

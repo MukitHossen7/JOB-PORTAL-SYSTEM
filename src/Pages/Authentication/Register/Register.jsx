@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { createUsers, signInGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -23,6 +25,7 @@ const Register = () => {
       .then((result) => {
         toast.success("Registration successfully");
         console.log(result);
+        navigate("/");
       })
       .catch((error) => {
         console.error("Error creating user: ", error);

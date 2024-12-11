@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { IoLocation } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const JobCard = ({ job }) => {
   const {
+    _id,
     company_logo,
     location,
     company,
@@ -10,10 +12,11 @@ const JobCard = ({ job }) => {
     jobType,
     description,
     salaryRange,
+    requirements,
   } = job;
   return (
     <div>
-      <div className=" p-6 bg-gradient-to-r from-white to-gray-100 shadow-xl rounded-xl overflow-hidden border border-gray-300">
+      <article className=" h-[500px] px-6 pt-6 bg-gradient-to-r from-white to-gray-100 shadow-lg rounded-xl overflow-hidden border border-gray-300">
         <div className="text-start">
           <div className="flex items-center gap-3 mb-6">
             <img
@@ -45,10 +48,9 @@ const JobCard = ({ job }) => {
               Requirements:
             </h3>
             <ul className="list-disc list-inside text-gray-700 space-y-1">
-              <li>JavaScript</li>
-              <li>React</li>
-              <li>Node.js</li>
-              <li>MongoDB</li>
+              {requirements.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
             </ul>
           </div>
           <div className=" mb-5 flex items-center justify-between">
@@ -59,14 +61,15 @@ const JobCard = ({ job }) => {
               </span>
             </p>
             <div className="flex justify-center">
-              <button className="px-6 py-3 bg-indigo-600 text-white font-bold text-sm uppercase tracking-wide rounded-full hover:bg-indigo-600 focus:ring-4 focus:ring-blue-300">
-                Apply Now
-              </button>
+              <Link to={`/details/${_id}`}>
+                <button className="px-6 py-3 bg-indigo-600 text-white font-bold text-sm uppercase tracking-wide rounded-full hover:bg-indigo-600 focus:ring-4 focus:ring-blue-300">
+                  Apply Now
+                </button>
+              </Link>
             </div>
           </div>
-          {/* Apply Now Button */}
         </div>
-      </div>
+      </article>
     </div>
   );
 };
