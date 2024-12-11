@@ -6,7 +6,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUsers } = useContext(AuthContext);
+  const { createUsers, signInGoogle } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -28,6 +28,11 @@ const Register = () => {
         console.error("Error creating user: ", error);
         toast.error("Already use this email address");
       });
+  };
+  const handleRegisterGoogle = () => {
+    signInGoogle().then(() => {
+      toast.success("Register in Google successful");
+    });
   };
   return (
     <div className="py-20">
@@ -134,7 +139,10 @@ const Register = () => {
               </div>
               <div className="divider text-black pb-0">OR</div>
             </form>
-            <button className="border border-indigo-600 mt-0 px-4 py-2 rounded-full mx-8 font-semibold mb-8">
+            <button
+              onClick={handleRegisterGoogle}
+              className="border border-indigo-600 mt-0 px-4 py-2 rounded-full mx-8 font-semibold mb-8"
+            >
               Register in Google
             </button>
           </div>
