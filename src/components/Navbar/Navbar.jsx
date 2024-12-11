@@ -65,11 +65,15 @@ const Navbar = () => {
           ) : (
             <div>
               <Link to="/login">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn bg-indigo-600 hover:bg-indigo-600 text-white">
+                  Login
+                </button>
               </Link>
               <Link to="/register">
                 {" "}
-                <button className="btn btn-primary">Register</button>
+                <button className="btn bg-indigo-600 hover:bg-indigo-600 text-white">
+                  Register
+                </button>
               </Link>
             </div>
           )}

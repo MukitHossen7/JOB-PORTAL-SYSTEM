@@ -35,7 +35,7 @@ const Register = () => {
           <div className="text-center lg:text-left w-full lg:w-1/2">
             <Lottie animationData={animationRegister}></Lottie>
           </div>
-          <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-md lg:w-1/2">
+          <div className="card  w-full max-w-xl shrink-0 shadow-md lg:w-1/2">
             <h1 className="text-4xl font-bold text-center py-4">
               Register now!
             </h1>
@@ -127,7 +127,9 @@ const Register = () => {
                 </span>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn bg-indigo-600 hover:bg-indigo-600 text-white">
+                  Register
+                </button>
               </div>
             </form>
           </div>

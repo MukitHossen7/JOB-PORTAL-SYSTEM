@@ -36,7 +36,7 @@ const Login = () => {
           <div className="text-center lg:text-left w-full lg:w-1/2">
             <Lottie animationData={loginAnimation}></Lottie>
           </div>
-          <div className="card bg-base-100  max-w-xl shrink-0 shadow-md w-full lg:w-1/2">
+          <div className="card max-w-3xl shrink-0 shadow-md w-full lg:w-1/2">
             <h1 className="text-2xl lg:text-4xl font-bold text-center py-4">
               Login now!
             </h1>
@@ -85,7 +85,9 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn bg-indigo-600 hover:bg-indigo-600 text-white">
+                  Login
+                </button>
               </div>
             </form>
           </div>
