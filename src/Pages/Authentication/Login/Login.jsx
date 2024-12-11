@@ -6,7 +6,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, signInGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -29,18 +29,25 @@ const Login = () => {
         toast.error("Invalid credentials email/password");
       });
   };
+  const handleSignInGoogle = () => {
+    signInGoogle().then(() => {
+      toast.success("Login successful with Google");
+    });
+  };
   return (
-    <div className="">
-      <div className="hero min-h-screen">
+    <div className="py-20">
+      <div className="hero ">
         <div className="hero-content flex-col lg:flex-row-reverse gap-10 lg:gap-14">
-          <div className="text-center lg:text-left w-full lg:w-1/2">
-            <Lottie animationData={loginAnimation}></Lottie>
+          <div className="text-center lg:text-left w-full lg:w-1/2 ">
+            <div className="">
+              <Lottie animationData={loginAnimation}></Lottie>
+            </div>
           </div>
-          <div className="card max-w-3xl shrink-0 shadow-md w-full lg:w-1/2">
-            <h1 className="text-2xl lg:text-4xl font-bold text-center py-4">
+          <div className="card max-w-xl shrink-0 shadow-md w-full lg:w-1/2 ">
+            <h1 className="text-2xl lg:text-4xl font-semibold text-center py-4">
               Login now!
             </h1>
-            <form className="card-body" onSubmit={handleSubmit(handleLogin)}>
+            <form className="card-body " onSubmit={handleSubmit(handleLogin)}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email*</span>
@@ -89,7 +96,14 @@ const Login = () => {
                   Login
                 </button>
               </div>
+              <div className="divider text-black pb-0">OR</div>
             </form>
+            <button
+              onClick={handleSignInGoogle}
+              className="border border-indigo-600 mt-0 px-4 py-2 rounded-full mx-8 font-semibold mb-8"
+            >
+              Login Google
+            </button>
           </div>
         </div>
       </div>

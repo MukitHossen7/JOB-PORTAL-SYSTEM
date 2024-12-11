@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+
 const Register = () => {
   const { createUsers } = useContext(AuthContext);
   const {
@@ -29,14 +30,14 @@ const Register = () => {
       });
   };
   return (
-    <div>
-      <div className="hero  min-h-screen">
+    <div className="py-20">
+      <div className="hero">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left w-full lg:w-1/2">
             <Lottie animationData={animationRegister}></Lottie>
           </div>
           <div className="card  w-full max-w-xl shrink-0 shadow-md lg:w-1/2">
-            <h1 className="text-4xl font-bold text-center py-4">
+            <h1 className="text-4xl font-semibold text-center py-4">
               Register now!
             </h1>
             <form className="card-body" onSubmit={handleSubmit(handleRegister)}>
@@ -131,7 +132,11 @@ const Register = () => {
                   Register
                 </button>
               </div>
+              <div className="divider text-black pb-0">OR</div>
             </form>
+            <button className="border border-indigo-600 mt-0 px-4 py-2 rounded-full mx-8 font-semibold mb-8">
+              Register in Google
+            </button>
           </div>
         </div>
       </div>
