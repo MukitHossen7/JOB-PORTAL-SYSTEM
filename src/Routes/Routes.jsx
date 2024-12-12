@@ -5,6 +5,7 @@ import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
 import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import PrivateRoute from "./PrivateRoute";
+import ApplyForm from "../Pages/ApplyForm/ApplyForm";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/jobs/${params.id}`),
+      },
+      {
+        path: "/applyForm/:id",
+        element: <ApplyForm></ApplyForm>,
       },
     ],
   },

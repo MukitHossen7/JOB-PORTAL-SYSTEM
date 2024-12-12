@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsPage = () => {
   const job = useLoaderData();
@@ -87,9 +87,11 @@ const DetailsPage = () => {
             </div>
 
             <div className="text-right mt-4">
-              <button className="bg-indigo-500 text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-indigo-600 transition duration-200">
-                Apply Now
-              </button>
+              <Link to={`/applyForm/${job._id}`}>
+                <button className="bg-indigo-500 text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-indigo-600 transition duration-200">
+                  Apply Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
