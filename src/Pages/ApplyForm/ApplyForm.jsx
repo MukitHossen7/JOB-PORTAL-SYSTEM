@@ -18,6 +18,17 @@ const ApplyForm = () => {
       candidate_email: user?.email,
     };
     console.log(applyForm);
+    fetch("http://localhost:5000/apply_jobs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(applyForm),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   return (
     <div className="py-20">
