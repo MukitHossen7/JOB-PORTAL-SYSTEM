@@ -6,6 +6,7 @@ import Register from "../Pages/Authentication/Register/Register";
 import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import PrivateRoute from "./PrivateRoute";
 import ApplyForm from "../Pages/ApplyForm/ApplyForm";
+import MyApplication from "../Pages/MyApplication/MyApplication";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ApplyForm></ApplyForm>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myApplications",
+        element: (
+          <PrivateRoute>
+            <MyApplication></MyApplication>
           </PrivateRoute>
         ),
       },
