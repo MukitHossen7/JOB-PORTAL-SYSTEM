@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ApplyForm = () => {
   const { user } = useContext(AuthContext);
@@ -27,7 +28,13 @@ const ApplyForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Succesfully Appley",
+            text: "You clicked the button!",
+            icon: "success",
+          });
+        }
       });
   };
   return (

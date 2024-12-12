@@ -36,7 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/applyForm/:id",
-        element: <ApplyForm></ApplyForm>,
+        element: (
+          <PrivateRoute>
+            <ApplyForm></ApplyForm>
+          </PrivateRoute>
+        ),
       },
     ],
   },
