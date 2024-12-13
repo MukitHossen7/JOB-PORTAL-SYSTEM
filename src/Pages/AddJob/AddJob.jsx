@@ -2,7 +2,7 @@ import { useState } from "react";
 import Select from "react-select";
 
 const AddJob = () => {
-  const [requirement, setRequirement] = useState([]);
+  const [requirements, setRequirement] = useState([]);
   const [responsibilities, setResponsibilities] = useState([]);
   const responsibilitie = [
     {
@@ -44,7 +44,7 @@ const AddJob = () => {
     },
     { value: "Develop predictive models", label: "Develop predictive models" },
   ];
-  const requirements = [
+  const requirement = [
     { value: "JavaScript", label: "JavaScript" },
     { value: "React", label: "React" },
     { value: "Node.js", label: "Node.js" },
@@ -96,7 +96,7 @@ const AddJob = () => {
       description,
       company,
       company_logo,
-      requirement,
+      requirements,
       responsibilities,
       hr_email,
       hr_name,
@@ -271,7 +271,7 @@ const AddJob = () => {
               isMulti
               onChange={handleRequirements}
               name="requirements"
-              options={requirements}
+              options={requirement}
               className="basic-multi-select"
               classNamePrefix="select"
               required

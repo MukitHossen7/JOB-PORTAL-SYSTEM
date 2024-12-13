@@ -38,8 +38,12 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow gap-5 font-semibold"
             >
               <NavLink to="/">Home</NavLink>
-              <NavLink to="/myApplications">My Application</NavLink>
-              <NavLink to="/addJob">Add Job</NavLink>
+              {user && (
+                <div className="flex flex-col gap-5 ">
+                  <NavLink to="/myApplications">My Application</NavLink>
+                  <NavLink to="/addJob">Add Job</NavLink>
+                </div>
+              )}
             </ul>
           </div>
           <Link
@@ -57,8 +61,12 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-10 font-semibold">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/myApplications">My Application</NavLink>
-            <NavLink to="/addJob">Add Job</NavLink>
+            {user && (
+              <div className="flex items-center gap-10 ">
+                <NavLink to="/myApplications">My Application</NavLink>
+                <NavLink to="/addJob">Add Job</NavLink>
+              </div>
+            )}
           </ul>
         </div>
         <div className="navbar-end gap-3">
