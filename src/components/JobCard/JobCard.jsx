@@ -16,7 +16,7 @@ const JobCard = ({ job }) => {
   } = job;
   return (
     <div>
-      <article className=" h-[500px] px-6 pt-6 bg-gradient-to-r from-white to-gray-100 shadow-lg rounded-xl overflow-hidden border border-gray-300">
+      <article className=" h-[550px] px-6 pt-6 bg-gradient-to-r from-white to-gray-100 shadow-lg rounded-xl overflow-hidden border border-gray-300">
         <div className="text-start">
           <div className="flex items-center gap-3 mb-6">
             <img

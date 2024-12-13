@@ -39,6 +39,7 @@ const Navbar = () => {
             >
               <NavLink to="/">Home</NavLink>
               <NavLink to="/myApplications">My Application</NavLink>
+              <NavLink to="/addJob">Add Job</NavLink>
             </ul>
           </div>
           <Link
@@ -57,6 +58,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 gap-10 font-semibold">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/myApplications">My Application</NavLink>
+            <NavLink to="/addJob">Add Job</NavLink>
           </ul>
         </div>
         <div className="navbar-end gap-3">
