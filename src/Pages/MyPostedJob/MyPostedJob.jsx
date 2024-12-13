@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const MyPostedJob = () => {
   const { user } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const MyPostedJob = () => {
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, [user.email]);
+  console.log(jobs);
   return (
     <div className="pt-12 pb-20">
       <h3 className=" text-3xl text-center pb-8 font-semibold">
@@ -24,7 +26,7 @@ const MyPostedJob = () => {
               <th>Job Title</th>
               <th>HR Name</th>
               <th>HR Email</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -50,7 +52,12 @@ const MyPostedJob = () => {
                 <td>{job?.title}</td>
                 <td>{job?.hr_name}</td>
                 <td>{job?.hr_email}</td>
-                <th>
+                <th className="">
+                  <Link to={`/viewApplication/${job._id}`}>
+                    <button className="btn mr-1 bg-blue-500 hover:bg-blue-500 text-white btn-xs ml-4">
+                      View Application
+                    </button>
+                  </Link>
                   <button className="btn bg-red-500 hover:bg-red-500 text-white btn-xs">
                     X
                   </button>
