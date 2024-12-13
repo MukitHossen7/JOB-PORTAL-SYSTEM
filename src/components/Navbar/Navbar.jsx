@@ -42,6 +42,7 @@ const Navbar = () => {
                 <div className="flex flex-col gap-5 ">
                   <NavLink to="/myApplications">My Application</NavLink>
                   <NavLink to="/addJob">Add Job</NavLink>
+                  <NavLink to="/myPostedJob">My Posted Job</NavLink>
                 </div>
               )}
             </ul>
@@ -65,6 +66,7 @@ const Navbar = () => {
               <div className="flex items-center gap-10 ">
                 <NavLink to="/myApplications">My Application</NavLink>
                 <NavLink to="/addJob">Add Job</NavLink>
+                <NavLink to="/myPostedJob">My Posted Job</NavLink>
               </div>
             )}
           </ul>
