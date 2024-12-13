@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Select from "react-select";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
   const [requirements, setRequirement] = useState([]);
   const [responsibilities, setResponsibilities] = useState([]);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const responsibilitie = [
     {
       value: "Develop and maintain software",
@@ -102,6 +107,24 @@ const AddJob = () => {
       hr_name,
     };
     console.log(AddFormData);
+    fetch("http://localhost:5000/jobs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(AddFormData),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.insertedId) {
+          Swal.fire({
+            title: "Successfully added Job list",
+            text: "You clicked the button!",
+            icon: "success",
+          });
+          navigate("/");
+        }
+      });
   };
   return (
     <div className="pt-10 pb-20">
@@ -140,8 +163,9 @@ const AddJob = () => {
               name="jobType"
               className="w-full border border-gray-300 p-2 rounded-md"
               required
+              defaultValue="Select Job Type"
             >
-              <option value="" disabled selected>
+              <option value="Select Job Type" disabled>
                 Select Job Type
               </option>
               <option value="Hybrid">Hybrid</option>
@@ -212,6 +236,7 @@ const AddJob = () => {
                   name="currency"
                   className="w-full border border-gray-300 p-2 rounded-md"
                   required
+                  defaultValue="currency"
                 >
                   <option value="" disabled selected>
                     currency
@@ -297,6 +322,7 @@ const AddJob = () => {
             <label className="block text-sm font-medium mb-1">HR Email</label>
             <input
               type="email"
+              defaultValue={user?.email}
               name="hr_email"
               placeholder="HR Email"
               className="w-full border border-gray-300 p-2 rounded-md"
