@@ -5,16 +5,18 @@ import { signOut } from "firebase/auth";
 import auth from "../../Firebase/firebase.init";
 import toast from "react-hot-toast";
 import navIcon from "../../assets/icon/icons8-job-application-48.png";
+import { ThemeContext } from "../../Provider/ThemeProvider";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
+  const { toggle } = useContext(ThemeContext);
   const handleLogOut = () => {
     signOut(auth).then(() => {
       toast.success("Successfully logged out");
     });
   };
   return (
-    <div className="pt-8">
-      <div className="navbar bg-base-100">
+    <div className="pt-4 pb-2 sticky top-0 z-40 bg-base-100 dark:bg-gray-800 dark:text-white/80">
+      <div className="navbar  w-11/12 md:w-11/12 lg:w-11/12 xl:container mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -72,6 +74,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-3">
+          <input
+            type="checkbox"
+            className="toggle"
+            onClick={() => toggle()}
+            defaultChecked
+          />
           {user?.email ? (
             <button onClick={handleLogOut} className="btn btn-primary">
               LogOut
