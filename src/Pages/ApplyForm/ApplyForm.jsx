@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ApplyForm = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
+  const navigate = useNavigate();
   const handleApplyJobForm = (e) => {
     e.preventDefault();
     const github = e.target.github.value;
@@ -34,6 +35,7 @@ const ApplyForm = () => {
             text: "You clicked the button!",
             icon: "success",
           });
+          navigate("/myApplications");
         }
       });
   };
