@@ -36,7 +36,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobs/${params.id}`),
+          fetch(`https://job-portal-server-self.vercel.app/jobs/${params.id}`),
       },
       {
         path: "/applyForm/:id",
@@ -78,7 +78,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/apply_jobs/job/${params.job_id}`),
+          fetch(
+            `https://job-portal-server-self.vercel.app/apply_jobs/job/${params.job_id}`
+          ),
       },
     ],
   },
