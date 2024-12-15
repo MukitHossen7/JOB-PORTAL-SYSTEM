@@ -20,7 +20,7 @@ const ApplyForm = () => {
       candidate_email: user?.email,
     };
     console.log(applyForm);
-    fetch("https://job-portal-server-self.vercel.app/apply_jobs", {
+    fetch("http://localhost:5000/apply_jobs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

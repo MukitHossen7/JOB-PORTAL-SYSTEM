@@ -1,17 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./../../Provider/AuthProvider";
+import axios from "axios";
 
 const MyApplication = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch(
-      `https://job-portal-server-self.vercel.app/apply_jobs?email=${user.email}`
-    )
-      .then((res) => res.json())
-      .then((data) => setJobs(data));
+    // fetch(`http://localhost:5000/apply_jobs?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setJobs(data));
+    axios
+      .get(`http://localhost:5000/apply_jobs?email=${user.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => setJobs(res.data));
   }, [user.email]);
-  console.log(jobs);
+
   return (
     <div className="pt-10 pb-20">
       <h2 className="font-semibold text-3xl text-center">

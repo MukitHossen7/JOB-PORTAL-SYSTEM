@@ -5,7 +5,7 @@ const ViewApplication = () => {
   const jobApplications = useLoaderData();
   const handleUpdate = (e, id) => {
     const status = e.target.value;
-    fetch(`https://job-portal-server-self.vercel.app/apply_jobs/${id}`, {
+    fetch(`http://localhost:5000/apply_jobs/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
