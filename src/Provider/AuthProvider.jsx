@@ -40,14 +40,20 @@ const AuthProvider = ({ children }) => {
       if (currentUser?.email) {
         const users = { email: currentUser?.email };
         axios
-          .post("http://localhost:5000/jwt", users, { withCredentials: true })
+          .post("https://job-portal-server-self.vercel.app/jwt", users, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log(res.data);
             setLoading(false);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post(
+            "https://job-portal-server-self.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
           .then((res) => {
             console.log(res.data);
             setLoading(false);

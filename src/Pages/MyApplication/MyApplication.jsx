@@ -9,7 +9,7 @@ const MyApplication = () => {
   const axiosInstance = useAxiosInstance();
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/apply_jobs?email=${user.email}`)
+    // fetch(`https://job-portal-server-self.vercel.app/apply_jobs?email=${user.email}`)
     //   .then((res) => res.json())
     //   .then((data) => setJobs(data));
     axiosInstance

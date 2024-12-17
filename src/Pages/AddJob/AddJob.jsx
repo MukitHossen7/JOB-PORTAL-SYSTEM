@@ -107,7 +107,7 @@ const AddJob = () => {
       hr_name,
     };
     console.log(AddFormData);
-    fetch("http://localhost:5000/jobs", {
+    fetch("https://job-portal-server-self.vercel.app/jobs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
