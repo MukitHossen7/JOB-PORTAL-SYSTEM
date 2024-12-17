@@ -4,11 +4,13 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import navIcon from "../../assets/icon/icons8-job-application-48.png";
 import { ThemeContext } from "../../Provider/ThemeProvider";
+import { signOut } from "firebase/auth";
+import auth from "../../Firebase/firebase.init";
 const Navbar = () => {
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { toggle } = useContext(ThemeContext);
   const handleLogOut = () => {
-    signOutUser().then(() => {
+    signOut(auth).then(() => {
       toast.success("Successfully logged out");
     });
   };
