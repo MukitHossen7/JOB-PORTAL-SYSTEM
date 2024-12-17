@@ -1,27 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./../../Provider/AuthProvider";
 // import axios from "axios";
-import useAxiosInstance from "../../CustomHooks/useAxiosInstance";
 
 const MyApplication = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
-  const axiosInstance = useAxiosInstance();
+
   useEffect(() => {
-    // fetch(`http://localhost:5000/apply_jobs?email=${user.email}`)
-    //   .then((res) => res.json())
-    //   .then((data) => setJobs(data));
-    // axios
-    //   .get(`http://localhost:5000/apply_jobs?email=${user.email}`, {
-    //     withCredentials: true,
-    //   })
-    //   .then((res) => setJobs(res.data));
-
-    axiosInstance
-      .get(`/apply_jobs?email=${user.email}`)
-      .then((res) => setJobs(res.data));
-  }, [user.email]);
-
+    fetch(`http://localhost:5000/apply_jobs?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setJobs(data));
+  });
   return (
     <div className="pt-10 pb-20">
       <h2 className="font-semibold text-3xl text-center">
