@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import JobCard from "../JobCard/JobCard";
+import LazyLoad from "react-lazyload";
 
 const LatestJob = () => {
   const [jobs, setJobs] = useState([]);
@@ -17,7 +18,15 @@ const LatestJob = () => {
       </p>
       <div className="pt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {jobs.map((job) => (
-          <JobCard key={job._id} job={job}></JobCard>
+          <LazyLoad
+            key={job._id}
+            height="100px"
+            throttle={800}
+            once={true}
+            offset={[-200, 0]}
+          >
+            <JobCard job={job}></JobCard>
+          </LazyLoad>
         ))}
       </div>
     </div>

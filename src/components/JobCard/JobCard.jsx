@@ -41,7 +41,7 @@ const JobCard = ({ job }) => {
             </span>
           </div>
           <div>
-            <p className="pt-5">{description}</p>
+            <p className="pt-5">{description.substring(0, 100)}...</p>
           </div>{" "}
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-gray-800 mb-3 pt-3">
